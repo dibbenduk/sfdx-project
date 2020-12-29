@@ -1,0 +1,23 @@
+<aura:component controller="ReturnSObjectList">    
+    
+    <aura:attribute name="objName" type="String" />
+    <aura:attribute name="fieldName" type="String" />
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="Object"/>
+    
+    <aura:handler event="c:SelectObjectFromObjectList"
+                  action="{!c.updateObjectName}"/>
+    <aura:handler event="c:SMUpdateQueryEvent"
+                  action="{!c.updateColumns}"/>
+    <aura:handler event="c:SMDisplayRecordsEvent"
+                  action="{!c.updateTableRecords}"/>   
+    
+    
+    <!-- the container element determine the height of the datatable -->
+    <div style="height: 300px">
+        <lightning:datatable keyField="id"
+                             data="{! v.data }"
+                             columns="{! v.columns }"
+                             hideCheckboxColumn="true"/>
+    </div>
+</aura:component>
