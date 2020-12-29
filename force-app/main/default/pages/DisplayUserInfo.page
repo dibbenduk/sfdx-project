@@ -1,0 +1,5 @@
+<apex:page >
+    <p>
+        {! $user.firstname}
+    </p>
+</apex:page>

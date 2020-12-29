@@ -1,0 +1,14 @@
+<apex:page controller="actionFormExample">
+              
+    <p><apex:outputText value="Clicked? {!state}" id="showstate" /></p> 
+    <apex:outputPanel onclick="methodOneInJavascript('Yes!')" styleClass="btn"> 
+        Click Me 
+    </apex:outputPanel>
+    
+    <apex:form > 
+    <apex:actionFunction action="{!methodOne}" name="methodOneInJavascript"
+                         rerender="showstate">
+        <apex:param name="firstParam" assignTo="{!state}" value="" /> 
+    </apex:actionFunction>
+    </apex:form>
+</apex:page>

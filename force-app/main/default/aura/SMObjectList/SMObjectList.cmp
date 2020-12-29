@@ -1,0 +1,13 @@
+<aura:component controller="ReturnSObjectList">
+    
+    <aura:attribute name="ObjList" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="ObjChange" type="c:SelectObjectFromObjectList" />
+    
+    <lightning:select name="select" label="Select an Object:" aura:id="select" onchange="{!c.handleObjChange}" >
+        <aura:iteration items="{!v.ObjList}" var="option">
+            <option text="{!option}" value="{!option}"/>
+        </aura:iteration>
+    </lightning:select>
+    
+</aura:component>

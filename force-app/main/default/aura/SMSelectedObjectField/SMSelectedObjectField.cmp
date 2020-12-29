@@ -1,0 +1,15 @@
+<aura:component controller="ReturnSObjectList">
+    <aura:attribute name="ObjFieldList" type="List" default="[]" />    
+    <!--aura:handler name="init" value="{!this}" action="{!c.doInit}" /-->
+    <aura:registerEvent name="SelectQuery" type="c:SMUpdateQueryEvent" />
+    <aura:handler event="c:SelectObjectFromObjectList"
+                  action="{!c.handleObjectChangeEvent}"/>
+    
+    <lightning:dualListbox name="ObjectList"
+                           label= "Select Objects"
+                           sourceLabel="Available"
+                           selectedLabel="Selected"
+                           options="{!v.ObjFieldList}"
+                           onchange="{! c.handleChange }"/>    
+    
+</aura:component>

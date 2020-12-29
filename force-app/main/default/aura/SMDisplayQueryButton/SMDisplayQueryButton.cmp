@@ -1,0 +1,4 @@
+<aura:component>
+    <aura:registerEvent name="buttonClicked" type="c:SMDisplayRecordsEvent" />
+    <lightning:button variant="brand" label="Show Records" iconName="utility:play" onclick="{! c.fireButtonClick }" />
+</aura:component>

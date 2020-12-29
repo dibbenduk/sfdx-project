@@ -1,0 +1,74 @@
+<apex:page controller="ReturnInstitutes">
+    <style type="text/css">
+        body {margin:20px;}
+        select {padding:5px;}
+        table {
+        border-collapse: collapse;        
+        width: 100%;
+        }
+        
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+        #mentor_list {
+        z-index: 1;
+        }
+        #student_list {
+        background: #F5F5F5;
+        animation: down 400ms ease-in;
+        }
+        @keyframes down {
+        from {
+        transform: translateY(-20px);
+        opacity: 0;
+        }
+        to {transform: translateY(0px);
+        opacity: 1;
+        }
+        }
+    </style>
+    <apex:form >
+        <apex:selectList value="{!uniName}" multiselect="false" size="1"
+                         onchange="MentorListPage()" style="cursor:pointer;">
+            <apex:selectOptions value="{! institutes}"/>
+        </apex:selectList><br/><br/>
+        
+        <apex:actionFunction action="{!getMentor}" name="MentorListPage"
+                             reRender="show2" />   
+        <apex:actionFunction action="{!getMentor}" name="StudentListPage"
+                             reRender="show2">
+            <apex:param name="first" assignTo="{!mentorName}" value=""/>
+        </apex:actionFunction> 
+        <h1>All Mentors </h1>        
+        <apex:outputPanel id="show2">
+            <table>        
+                <tr>
+                    <th colspan="2">Mentor Name</th>
+                    <th colspan="3">Designation</th>
+                </tr>
+                
+                <apex:repeat value="{! MentorList}" var="mnt" >            
+                    <tr id="mentor_list">
+                        <apex:outputLabel onclick="StudentListPage('{!mnt.name}')" style="cursor:pointer;">
+                            <td colspan="2">{!mnt.name}</td>
+                        </apex:outputLabel>
+                        <td colspan="3">{!mnt.Designation__c}</td>
+                    </tr>
+                    <apex:repeat value="{! StudentList}" var="std" 
+                                 rendered="{! mnt.name == mentorName}">            
+                        <tr id="student_list">
+                            <td> </td>
+                            <td>{!std.name}</td>
+                            <td>{!std.Class__c}</td>
+                            <td>{!std.City__c}</td>
+                            <td>{!std.State__c}</td>
+                        </tr>                    
+                    </apex:repeat>                    
+                </apex:repeat>                
+                
+            </table>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

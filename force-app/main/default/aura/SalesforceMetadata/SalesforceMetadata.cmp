@@ -1,0 +1,7 @@
+<aura:component>
+    <c:SMObjectList /> 								<!-- Fires Event A -->
+    <c:SMSelectedObjectField />						<!-- Listens Event A and Fires Event B -->
+    <c:SMSelectQueryFromFields />					<!-- Listens Event A,B -->
+    <c:SMDisplayQueryButton />
+    <c:SMDisplayDataTable />
+</aura:component>

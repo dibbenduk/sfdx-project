@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name="selectQueryAtr" type="String" default="SELECT - FROM -" />
+    <aura:attribute name="objName" type="String" />
+    <aura:handler event="c:SMUpdateQueryEvent"
+                  action="{!c.updateSelectQuery}"/>
+    <aura:handler event="c:SelectObjectFromObjectList"
+                  action="{!c.updateObjectName}"/>
+    
+    <lightning:input name="input1" label="Enter some text" value="{!v.selectQueryAtr}" />
+</aura:component>
