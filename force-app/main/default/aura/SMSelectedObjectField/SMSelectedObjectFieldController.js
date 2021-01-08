@@ -8,7 +8,9 @@
     },
     
     handleObjectChangeEvent: function(component, event, helper) {        
-        //console.log("Event capturing");
+        //console.log("clog " + component.find("dualList").get("v.value"));
+        component.find("dualList").set("v.value",[]);
+        //component.set("v.ObjFieldList", []);
         let newItem = event.getParam("ObjName");
         helper.setFieldList(component, newItem);
     }

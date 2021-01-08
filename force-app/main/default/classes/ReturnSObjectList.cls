@@ -1,5 +1,5 @@
 public with sharing class ReturnSObjectList {    
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<String> getObjectList() {        
         List<string> SObjectList = new List<string>();
         //List<SelectOption> options = new List<SelectOption>();
@@ -21,24 +21,23 @@ public with sharing class ReturnSObjectList {
         return SObjectList;        
     }
     
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<String> getObjectFieldList(String strName) { 
         
         SObjectType objName = Schema.getGlobalDescribe().get(strName);
         
         Map<String, Schema.SObjectField> fieldMap = objName.getDescribe().fields.getMap();
-        Set<String> fieldSet = fieldMap.keySet();
         List<String> fieldList = new List<String>();
         
-        for(String str: fieldSet) {
-            fieldList.add(str);
+        for(Schema.SObjectField field: fieldMap.values()) {
+            fieldList.add(field.getDescribe().getName());
         }
         System.debug('FieldList returned');
         System.debug(fieldList);
         return fieldList;
     }
     
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<SObject> getRecords(String que) {
         List<SObject> a = Database.query(que);
         System.debug(a);

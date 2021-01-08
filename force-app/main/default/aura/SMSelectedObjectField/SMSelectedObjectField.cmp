@@ -6,6 +6,7 @@
                   action="{!c.handleObjectChangeEvent}"/>
     
     <lightning:dualListbox name="ObjectList"
+                           aura:id="dualList"
                            label= "Select Objects"
                            sourceLabel="Available"
                            selectedLabel="Selected"
