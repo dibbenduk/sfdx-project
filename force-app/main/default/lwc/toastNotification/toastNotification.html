@@ -1,0 +1,29 @@
+<template>
+  <lightning-card title="MiscNotification" icon-name="custom:custom19">
+    <div class="slds-m-around_medium">
+      <lightning-input
+        label="Title"
+        value={_title}
+        onchange={titleChange}
+      ></lightning-input>
+      <lightning-input
+        label="Message"
+        value={message}
+        onchange={messageChange}
+      ></lightning-input>
+      <lightning-combobox
+        label="Variant"
+        value={variant}
+        onchange={variantChange}
+        options={variantOptions}
+      >
+      </lightning-combobox>
+      <p class="slds-m-vertical_small">
+        <lightning-button
+          label="Show Notification"
+          onclick={showNotification}
+        ></lightning-button>
+      </p>
+    </div>
+  </lightning-card>
+</template>
